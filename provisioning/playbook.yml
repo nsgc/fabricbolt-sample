@@ -14,11 +14,3 @@
 
     - name: Install fabric
       pip: name=fabric
-
-- hosts: all
-  tasks:
-    - name: Copy fabric file
-      copy: src=../conf/hi.py dest=/home/vagrant
-
-    - name: Fab
-      shell: fab -f hi.py -H localhost -p vagrant say_hi > result
