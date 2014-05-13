@@ -1,0 +1,8 @@
+---
+- hosts: gw
+  tasks:
+    - name: Copy fabric file
+      copy: src=../conf/deploy.py dest=/home/vagrant
+
+    - name: Fab
+      shell: fab -f deploy.py -H 192.168.111.223 -p vagrant put_file
