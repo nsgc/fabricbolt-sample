@@ -1,5 +1,5 @@
 ---
-- hosts: gw
+- hosts: bolt
   sudo: yes
   tasks:
     - name: Install libevent-devel python-devel python-setuptools
