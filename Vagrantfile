@@ -6,6 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "bolt" do |bolt|
     bolt.vm.network "private_network", ip: "192.168.111.221"
+    bolt.vm.network "forwarded_port", guest: 8000, host: 8000
 
     bolt.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbooks/provisioning/bolt.yml"

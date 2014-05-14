@@ -3,7 +3,7 @@
   sudo: yes
   tasks:
     - name: Install libevent-devel python-devel python-setuptools
-      yum: pkg={{item}}
+      yum: pkg={{item}} state=latest
       with_items:
         - libevent-devel
         - python-devel
@@ -12,5 +12,19 @@
     - name: Install pip
       easy_install: name=pip
 
-    - name: Install fabric
-      pip: name=fabric
+    - name: Install setuptools
+      pip: name=setuptools extra_args='-U'
+
+    - name: Install setuptools second
+      pip: name=setuptools extra_args='-U'
+    #- name: Install fabric
+    #  pip: name=fabric
+
+    - name: Install fabric-bolt
+      pip: name=fabric-bolt
+
+    - name: fabric-bolt init
+      command: fabric-bolt init
+
+    - name: fabric-bolt migrate db
+      command: fabric-bolt syncdb --migrate
